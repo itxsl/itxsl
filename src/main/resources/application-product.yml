@@ -1,0 +1,108 @@
+server:
+  port: 8688
+  jetty:
+    max-http-post-size: 800000
+site-url:  https://www.itxsl.cn #网站地址
+spring:
+  oauth:
+    qq:
+      client_id: 101501219
+      client_secret: d342a30fc677ed5ce5b32d9a695afe77
+      redirect_uri: ${site-url}/authorize/qq
+      code_uri: https://graph.qq.com/oauth2.0/authorize
+      access_token_uri: https://graph.qq.com/oauth2.0/token
+      openid_uri: https://graph.qq.com/oauth2.0/me
+      user_info_uri: https://graph.qq.com/user/get_user_info
+    weibo:
+      client-Id: 1936707381
+      client-secret: 1aa0a0fc89d19c187d2e88b5c927832e
+      redirect-uri: ${site-url}/authorize/weibo
+      access-token-uri: https://api.weibo.com/oauth2/access_token
+      user-info-uri: https://api.weibo.com/2/users/show.json
+    github:
+      client-Id: 752b5ff365735837bef4
+      client-secret: 754c61eb7b073fb999035d18426fa0dd7570c36b
+      redirect-uri: ${site-url}/authorize/weibo
+      access-token-uri: https://github.com/login/oauth/access_token
+      user-info-uri: https://api.github.com/user
+    gitee:
+      client-Id: 2b0f977e397f709a80b104d83fe53494b63484e872418ed268b291bb05f010f5
+      client-secret: cfc716552f502430c21d211d599608acbb6401a262dc0e274c10aa10ba67360c
+      redirect-uri: ${site-url}/authorize/gitee
+      access-token-uri: https://gitee.com/oauth/authorize
+      user-info-uri: https://api.github.com/user
+  datasource:
+    url: jdbc:postgresql://118.25.141.221:8699/itxsl?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: postgres
+    password: qazasd@154156570
+    driver-class-name: org.postgresql.Driver
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+  session:
+    store-type: redis
+    timeout: 1h
+    redis:
+      namespace: itxsl
+  oss:
+    enable: qq  # aliyun , qq #阿里云存储只写上传，未实现图片清理功能，建议使用腾讯云存储
+    endpoint: https://www.store.itxsl.cn
+    bucket-name:  files-1257420750
+    access-key-id: AKIDcw85rEMglbGJ8IEk5G6mE0XVLAuaJg1X
+    access-key-secret: U57GJWeW9WZtHgt6ZAbcNgFnJyOmB91Y
+    qcloud-region: ap-chengdu #创建桶所在区域参考:https://cloud.tencent.com/document/product/436/6224
+    path: images/  #创建的文件夹，如没有在桶下创建文件夹可不填写
+  servlet:
+    multipart:
+      max-file-size: 8000000
+  devtools:
+    restart:
+      enabled: true
+  mail:
+    host: smtp.qq.com
+    username: itxsl@itxsl.cn
+    password: zzbetmjoblbzcadf
+    default-encoding: UTF-8
+    port: 587
+    auth: true
+    protocol: smtp
+    auth-key: mail.smtp.auth
+    timeout: 25000
+    timeout-key: mail.smtp.timeout
+    loglevel: true
+    loglevel-key: mail.smtp.debug
+    redirect-url: ${site-url}
+nutz:
+  json:
+    enabled: true
+    auto-unicode: false
+    quote-name: true
+    ignore-null: true
+    null-as-emtry: true
+    date-format: yyyy-MM-dd #时间格式
+    mode: compact
+  dao:
+    runtime:
+      add-column: true
+      check-index: false
+      delete-column: false
+      foce-create: false
+      create: true
+      migration: true
+      basepackage:
+        - cn.itxsl.kernel.model.mapped
+    sqlmanager:
+      paths:
+        - sqls
+logging:
+  level:
+    root: error
+    org.nutz: error
+

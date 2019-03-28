@@ -1,0 +1,366 @@
+body {
+    background-color: #000
+}
+
+@media (min-width: 1000px) {
+    body {
+        background-size: 100% 100%;
+        animation: bodycs .6s;
+        -o-animation: bodycs .6s;
+        -moz-animation: bodycs .6s;
+        -webkit-animation: bodycs .6s
+    }
+
+    body .major {
+        font-size: 28px
+    }
+}
+
+@media (max-width: 999.99px) {
+    body {
+        background-size: cover
+    }
+
+    body .major {
+        font-size: 22px
+    }
+}
+
+@media (width: 768px) {
+    .part_1, .part_2, .part_3, .part_4, .part_4, .load {
+        width: 101.6%
+    }
+}
+
+nav {
+    background-color: transparent
+}
+
+.part_1, .part_2, .part_3, .part_4, .part_4 {
+    text-align: center;
+    overflow: hidden
+}
+
+.part_1 .container, .part_2 .container, .part_3 .container, .part_4 .container, .part_4 .container {
+    padding-top: 20px
+}
+
+.part_1 .container .major, .part_2 .container .major, .part_3 .container .major, .part_4 .container .major, .part_4 .container .major {
+    color: #405E79;
+    text-align: center
+}
+
+.part_1 .container .div_url, .part_2 .container .div_url, .part_3 .container .div_url, .part_4 .container .div_url, .part_4 .container .div_url {
+    padding-bottom: 28px
+}
+
+.part_1 .container .div_url .btn_url, .part_2 .container .div_url .btn_url, .part_3 .container .div_url .btn_url, .part_4 .container .div_url .btn_url, .part_4 .container .div_url .btn_url {
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #48A2F2;
+    padding: 7px 24px
+}
+
+
+.index_img2{
+    width: 100%;
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/banner_bg_2.jpg");
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/banner_bg_2.jpg");
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/banner_bg_2.jpg");
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/banner_bg_2.jpg");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    -webkit-animation: bng 1s ease;
+    -moz-animation: bng 1s ease;
+    -ms-animation: bng 1s ease;
+    animation: bng 1s ease;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -ms-background-size: 100% 100%;
+    background-size: 100% 100%
+
+}
+
+.part_1 {
+
+}
+
+.part_1 .part_1_brief {
+    color: #FFFFFF;
+    width: 200px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-left: -100px
+}
+
+.part_1 .part_1_brief .inner {
+    margin-bottom: 30px
+}
+
+.part_1 .part_1_brief .inner h2 {
+    -moz-animation: h2css 0.85s ease;
+    -webkit-animation: h2css 0.85s ease;
+    -ms-animation: h2css 0.85s ease;
+    animation: h2css 0.85s ease;
+    font-size: 24px;
+    display: block;
+    padding: 10px 0px;
+    opacity: 1
+}
+
+.part_1 .part_1_brief .inner:before, .part_1 .part_1_brief .inner:after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    -moz-animation: h2before 1.35s ease;
+    -webkit-animation: h2before 1.35s ease;
+    -ms-animation: h2before 1.35s ease;
+    animation: h2before 1.35s ease
+}
+
+.part_1 .part_1_brief .inner:before {
+    left: 0
+}
+
+.part_1 .part_1_brief .inner:after {
+    right: 0
+}
+
+.part_1 .part_1_brief .brief {
+    width: 280px;
+    margin-left: -38px;
+    font-size: 20px
+}
+
+.part_1 .guide {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0
+}
+
+.part_1 .guide a {
+    font-size: 20px;
+    color: #FFFFFF
+}
+
+.part_2 {
+    background: #FFFFFF
+}
+
+.part_2 .container .major, .part_2 .container .div_p, .part_2 .container .div_url {
+    position: relative;
+    top: 400px
+}
+
+.part_2 .container .major {
+    transition: 0.5s
+}
+
+.part_2 .container .div_p {
+    padding: 30px 0;
+    transition: 0.7s
+}
+
+.part_2 .container .div_p p {
+    font-size: 16px;
+    color: #73777C;
+    line-height: 24px
+}
+
+.part_2 .container .div_url {
+    padding: 30px 0;
+    transition: 0.9s
+}
+
+.part_2 .container .on {
+    top: 0
+}
+
+.part_3 {
+    background: #F7F7F9
+}
+
+.part_3 .container .major, .part_3 .container .row {
+    position: relative;
+    top: 400px
+}
+
+.part_3 .container .major {
+    transition: 0.5s
+}
+
+.part_3 .container .row {
+    padding-top: 30px;
+    transition: 0.7s;
+    padding-bottom: 48px
+}
+
+.part_3 .container .row .thumbnail {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    color: #73777C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 1
+}
+
+.part_3 .container .row .thumbnail img {
+    width: 80%;
+    height: 176px;
+    margin-bottom: 8px
+}
+
+.part_3 .container .row .thumbnail:hover {
+    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+    -webkit-transition: .5s
+}
+
+.part_3 .container .on {
+    top: 0
+}
+
+.part_4 {
+    background: #fff
+}
+
+.part_4 .container .major, .part_4 .container .row, .part_4 .container .div_url {
+    position: relative;
+    top: 400px
+}
+
+.part_4 .container .major {
+    padding-bottom: 1px;
+    transition: 0.5s
+}
+
+.part_4 .container .row {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    transition: 0.7s
+}
+
+.part_4 .container .row .thumbnail {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: #73777C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.part_4 .container .row .thumbnail a {
+    color: #000
+}
+
+.part_4 .container .row .thumbnail img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%
+}
+
+.part_4 .container .row .thumbnail .part_link:hover {
+    transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transition: .5s
+}
+
+.part_4 .container .div_url {
+    transition: 0.9s
+}
+
+.part_4 .container .on {
+    top: 0
+}
+
+.part_5 {
+    width: 100%;
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/botoom_bg_home.png");
+    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/botoom_bg_home.png");
+    background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/botoom_bg_home.png");
+    background-image: linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/img/botoom_bg_home.png");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-size: cover
+}
+
+.part_5 .container {
+    color: #FFFFFF
+}
+
+.part_5 .container .top_label {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 59px;
+    text-align: left
+}
+
+.part_5 .container .top_label img {
+    max-width: 300px
+}
+
+.part_5 .container .more {
+    font-size: 14px;
+    line-height: 25px
+}
+
+.part_5 .container .more .share {
+    width: 35%;
+    float: right;
+    text-align: center;
+    padding: 60px 0 10px 0
+}
+
+.part_5 .container .more .share ul {
+    width: 136px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    float: right
+}
+
+.part_5 .container .more .share ul li {
+    float: right;
+    margin: 0px 4px
+}
+
+.part_5 .container .more .div_span {
+    width: 64%;
+    float: left;
+    padding: 26px 0 10px 0;
+    text-align: left
+}
+
+.part_5 .container .more .load_lbl {
+    color: #1E90FF
+}
+
+.part_5 .copyright {
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    padding: 13px 0 26px 0;
+    text-align: left
+}

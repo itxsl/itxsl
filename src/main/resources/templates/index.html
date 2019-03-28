@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="${sites.logo}"/>
+    <title th:text="${sites.logoName}"></title>
+    <meta name="keywords" th:content="${sites.keyword}">
+    <meta name="description" th:content="${sites.description}">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/common.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/static/js/common.js"></script>
+    <script type="text/javascript" src="/static/js/index.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/special.css"/>
+</head>
+<style th:inline="css">
+    .index_img {
+        width: 100%;
+        background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url([[${sites.indexBackground}]]);
+        background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url([[${sites.indexBackground}]]);
+        background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url([[${sites.indexBackground}]]);
+        background-image: linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url([[${sites.indexBackground}]]);
+        background-attachment: fixed;
+        background-position: center center;
+        background-repeat: no-repeat;
+        text-align: center;
+        -webkit-animation: bng 1s ease;
+        -moz-animation: bng 1s ease;
+        -ms-animation: bng 1s ease;
+        animation: bng 1s ease;
+        -webkit-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -ms-background-size: 100% 100%;
+        background-size: 100% 100%
+
+    }
+
+    .welcome p {
+        font-size: 20px;
+    }
+</style>
+<body>
+<nav class="navbar-fixed-top">
+    <div class="container">
+        <div class="nav-logo" style="float: left;border-radius:70%;overflow:hidden;" id="logo">
+
+        </div>
+        <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-list">
+            <li><a id="1" href="/index" class="active">首页</a></li>
+            <li><a id="2" href="/article">日记本</a></li>
+            <li><a id="3" href="/message">留言板</a></li>
+            <li><a id="4" href="/link">友人帐</a></li>
+            <li><a id="5" href="/about">关于我</a></li>
+            <li class="nav-login">
+                <a id="login" href="/login" style="cursor: pointer">登陆</a>
+                <a id="logout" href="/logout" style="cursor: pointer;display: block">退出</a>
+            </li>
+            <li id="role"></li>
+        </ul>
+    </div>
+</nav>
+<input type="text" value="1" hidden="hidden" id="page_num">
+<div class="part_1" style="height: 953px;">
+    <div class="part_1_brief">
+        <div class="inner">
+            <h2 th:text="${sites.indexTitle}"></h2>
+        </div>
+        <div class="brief" th:utext="${sites.indexTitleContent}">
+
+        </div>
+
+
+    </div>
+    <div class="guide">
+        <a href="">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </a>
+    </div>
+</div>
+
+<div class="part_2">
+    <div class="container">
+        <div class="major">
+            —&nbsp;欢迎走进我的世界&nbsp;—
+        </div>
+        <div class="div_p" th:utext="${sites.indexWelcome}">
+
+        </div>
+        <div class="div_url">
+            <a href="/about" class="btn_url">关于我</a>
+        </div>
+    </div>
+</div>
+<div class="part_3">
+    <div class="container">
+        <div class="major">
+            —&nbsp;日记推荐&nbsp;—
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4 row_div" th:each="article:${articles}">
+                <a th:href="${article.id}">
+                    <div class="thumbnail">
+                        <img th:src="${article.cover}">
+                        <span th:text="${article.title}"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="part_4">
+    <div class="container">
+        <div class="major">
+            —&nbsp;友情链接&nbsp;—
+        </div>
+        <div class="link_ul">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3 col-md-2 row_div" th:each="link:${links}">
+                    <div class="thumbnail">
+                        <a th:href="${link.url}">
+                            <p>
+                                <img class="part_link" th:src="${link.icon}">
+                            </p>
+                            <p style="color: #000;font-size: 14px;" th:text="${link.title}"></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="div_url">
+            <a href="/link" class="btn_url">查看更多</a>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="part_5">
+    <div class="container">
+        <div class="top_label">
+            <img src="/static/img/shengming.png"/>
+        </div>
+        <div class="more clear">
+            <div class="share clear">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);"
+                           onclick="window.open('http://service.weibo.com/share/share.php?url='+encodeURIComponent(document.location.href));return false;"
+                           title="分享到新浪微博">
+                            <img src="/static/img/common/xinlang.png"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"
+                           onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;"
+                           title="分享到QQ空间">
+                            <img src="/static/img/common/q_zone.png"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"
+                           onclick="window.open('http://connect.qq.com/widget/shareqq/index.html?url='+encodeURIComponent(document.location.href));return false;"
+                           title="分享到QQ好友">
+                            <img src="/static/img/common/qq.png"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="div_span">
+                            <span class="load_span">
+                                当前访问量：<label class="load_lbl number"><span
+                                    th:text="${sites.visitorVolume}"></span></label>
+                            </span>
+                <br/>
+                <span class="load_span">
+                            更新时间：<label class="load_lbl updateTime"><span
+                        th:text="${#dates.format(sites.updateDate, 'yyyy-MM-dd ')}"></span></label>
+                        </span>
+            </div>
+        </div>
+        <div class="copyright">
+            <span th:text="${sites.recordInfo}"></span>
+        </div>
+    </div>
+</div>
+<!--返回指定-->
+<div class="load">
+    <div class="container">
+        <div class="container_right clear">
+            <a class="fh">
+                <img src="/static/img/common/top.png"/>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

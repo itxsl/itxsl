@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="${sites.logo}"/>
+    <title th:text="${article.title}"></title>
+    <meta name="keywords" th:content="${sites.keyword}">
+    <meta name="description" th:content="${sites.description}">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/common.css" rel="stylesheet" />
+    <script type="text/javascript" src="/static/js/common.js"></script>
+    <link rel="stylesheet" href="/static/css/special.css"/>
+    <link rel="stylesheet" href="/static/css/context.css">
+    <script src="/static/admin/editormd/lib/marked.min.js"></script>
+    <script src="/static/admin/editormd/lib/prettify.min.js"></script>
+    <script src="/static/admin/editormd/lib/raphael.min.js"></script>
+    <script src="/static/admin/editormd/lib/underscore.min.js"></script>
+    <script src="/static/admin/editormd/lib/sequence-diagram.min.js"></script>
+    <script type="text/javascript" src="/static/admin/layui.all.js"></script>
+    <link rel="stylesheet" href="/static/admin/css/layui.css"/>
+    <script src="/static/admin/editormd/lib/flowchart.min.js"></script>
+    <script src="/static/js/APlayer.min.js"></script>
+    <link rel="stylesheet" href="/static/css/APlayer.min.css"/>
+    <script type="text/javascript" src="/static/admin/wangEditor/wangEditor.js"></script>
+    <script src="/static/admin/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="/static/admin/editormd/editormd.min.js"></script>
+    <script type="text/javascript"> /* 鼠标特效 */ var a_idx = 0; jQuery(document).ready(function($) { $("body").click(function(e) { var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"); var $i = $("<span/>").text(a[a_idx]); a_idx = (a_idx + 1) % a.length; var x = e.pageX, y = e.pageY; $i.css({ "z-index": 999999999999999999999999999999999999999999999999999999999999999999999, "top": y - 20, "left": x, "position": "absolute", "font-weight": "bold", "color": "#ff6651" }); $("body").append($i); $i.animate({ "top": y - 180, "opacity": 0 }, 1500, function() { $i.remove(); }); }); }); </script>
+    <link rel="stylesheet" href="/static/admin/editormd/css/editormd.preview.css"/>
+    <style>
+        .demo {
+            width: 100%;
+            margin: 160px auto;
+            border-radius: 10px;
+        }
+
+        .demo p {
+            padding: 10px 0;
+            position: relative;
+            left: 16px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<style>
+    pre {
+        display: block;
+        padding: 0px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 0px solid #ccc;
+        border-radius: 0px;
+    }
+</style>
+<body>
+<nav class="navbar-fixed-top">
+    <div class="container">
+        <div class="nav-logo" style="float: left;border-radius:70%;overflow:hidden;" id="logo"></div>
+        <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-list">
+            <li><a id="1" href="/index">首页</a></li>
+            <li><a id="2" href="/article" class="active">日记本</a></li>
+            <li><a id="3" href="/message">留言板</a></li>
+            <li><a id="4" href="/link">友人帐</a></li>
+            <li><a id="5" href="/about">关于我</a></li>
+            <li class="nav-login">
+                <a id="login" href="/login" style="cursor: pointer"  >登陆</a>
+                <a id="logout" href="/logout" style="cursor: pointer;display: block"  >退出</a>
+            </li>
+            <li id="role"></li>
+        </ul>
+    </div>
+</nav>
+<input type="text" value="2" hidden="hidden" id="page_num" >
+<input type="text" th:value="${article.music}" id="music_id" hidden="hidden">
+<div class="con">
+    <div class="con">
+        <div class="container">
+            <div class="context">
+                <span id="contentType" th:text="${article.contentType}" hidden="hidden"></span>
+                <ul class="route clear">
+                    <input type="text" hidden="hidden" class="context_id" th:value="${article.id}">
+                    <li><a href="/article">目录列表</a></li>
+                    <li>&nbsp;&gt;&nbsp;</li>
+                    <li><span class="ol_span"  th:text="${article.title}"></span></li>
+                </ul>
+                <div class="context_top">
+                    <em class="title_em" style="color: orangered;font-size: 14px;"></em>
+                    <h3 class="title" th:text="${article.title}"></h3>
+                    <div class="context_img">
+                        <img th:src="${article.icon}" class="name_img">
+                        <span class="context_name"  th:text="${article.nickname}"></span>
+                        <img src="/static/img/shijian_riji.png" class="time_img">
+                        <span class="context_time" th:text="${#dates.format(article.createTime, 'yyyy-MM-dd ')}"></span>
+                        <img src="/static/img/fangwen_riji.png" class="fangwen_img">
+                        <span class="context_fangwen" th:text="${article.click}"></span>
+                        <img src="/static/img/fenlei_riji.png" class="fangwen_img">
+                        <span class="context_fenlei" th:text="${article.type=='1'}? 技术分享:(${article.type=='2'}?生活点滴:更新公告)"></span>
+                    </div>
+                </div>
+
+                <div class="context_con " id="editormd-view" th:utext="${article.content}">
+
+                </div>
+                <div id="main" class="music_play">
+                    <div class="demo">
+                        <div id="player3" class="aplayer">
+                        </div>
+                    </div>
+                </div>
+                <div class="context_share">
+                    <a href="javascript:void(0);" onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;" class="btn_share"><img src="/static/img/q_zone.png">分享到QQ空间</a>
+                </div>
+            </div>
+
+            <div class="context_form">
+                <div class="context_input">
+                    邮箱：<input type="text" id="text_email" class="email email-show" placeholder="请输入邮箱"  data-container="body" data-placement="top" data-toggle="popover" data-content="邮箱格式有误,请检查！">
+                    <span><em>*</em>&nbsp;你的邮箱不会被公开</span>
+                    <span style="float: right;color: red"></span>
+                </div>
+                <div id="wEditor">
+                </div>
+                <div class="context_btn">
+                    <a role="button" class="btn_tj">确认提交</a>
+                </div>
+            </div>
+
+
+          <div class="head">
+                <div class="head_close">
+                    <a role="button" class="close_btn">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </div>
+                <ul class="head_img clear">
+
+                </ul>
+            </div>
+
+            <div class="context_em">
+                <img src="/static/img/liuyan_liuyan.png" alt="">评论（<em class="number_em">0</em>）
+            </div>
+            <div class="context_list" style="display: block;">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="part_5">
+        <div class="container">
+            <div class="top_label">
+                <img src="/static/img/shengming.png"/>
+            </div>
+            <div class="more clear">
+                <div class="share clear">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);"
+                               onclick="window.open('http://service.weibo.com/share/share.php?url='+encodeURIComponent(document.location.href));return false;"
+                               title="分享到新浪微博">
+                                <img src="/static/img/common/xinlang.png"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"
+                               onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;"
+                               title="分享到QQ空间">
+                                <img src="/static/img/common/q_zone.png"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"
+                               onclick="window.open('http://connect.qq.com/widget/shareqq/index.html?url='+encodeURIComponent(document.location.href));return false;"
+                               title="分享到QQ好友">
+                                <img src="/static/img/common/qq.png"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div_span">
+                            <span class="load_span">
+                                当前访问量：<label class="load_lbl number"><span
+                                    th:text="${sites.visitorVolume}"></span></label>
+                            </span>
+                    <br/>
+                    <span class="load_span">
+                            更新时间：<label class="load_lbl updateTime"><span
+                            th:text="${#dates.format(sites.updateDate, 'yyyy-MM-dd ')}"></span></label>
+                        </span>
+                </div>
+            </div>
+            <div class="copyright">
+                <span th:text="${sites.recordInfo}"></span>
+            </div>
+        </div>
+    </div>
+    <!--返回指定-->
+    <div class="load">
+        <div class="container">
+            <div class="container_right clear">
+                <a class="fh">
+                    <img src="/static/img/common/top.png"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript"  src="/static/js/context.js"></script>
+</html>

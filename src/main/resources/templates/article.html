@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="${sites.logo}"/>
+    <title th:text="${sites.logoName}" ></title>
+    <meta name="keywords" th:content="${sites.keyword}">
+    <meta name="description" th:content="${sites.description}">
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/admin/layui.all.js"></script>
+    <link rel="stylesheet" href="/static/admin/css/layui.css"/>
+    <link href="/static/css/common.css" rel="stylesheet" />
+    <script type="text/javascript" src="/static/js/common.js"></script>
+    <link rel="stylesheet" href="/static/css/special.css"/>
+    <script type="text/javascript" rel="stylesheet" src="/static/js/article.js"></script>
+    <link type="text/css" rel="stylesheet" href="/static/css/article.css">
+    <style>
+        .so{
+            line-height: 24px;
+            padding: 12px 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar-fixed-top">
+    <div class="container">
+        <div class="nav-logo" style="float: left;border-radius:70%;overflow:hidden;" id="logo"></div>
+        <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-list">
+            <li><a id="1" href="/index">首页</a></li>
+            <li><a id="2" href="/article" class="active">日记本</a></li>
+            <li><a id="3" href="/message">留言板</a></li>
+            <li><a id="4" href="/link">友人帐</a></li>
+            <li><a id="5" href="/about">关于我</a></li>
+            <li class="nav-login">
+                <a id="login" href="/login" style="cursor: pointer"  >登陆</a>
+                <a id="logout" href="/logout" style="cursor: pointer;display: block"  >退出</a>
+            </li>
+            <li id="role"></li>
+        </ul>
+    </div>
+</nav>
+<input type="text" value="2" hidden="hidden" id="page_num">
+<div class="con">
+    <div class="container">
+        <div class="article_img">
+            <img src="/static/img/banner_liuyan.png">
+        </div>
+        <div class="article_screen clear">
+            <ul class="screen_ul">
+                <li class="selected" id="0">
+                    <a role="button" class="btn_a">
+                        <img src="/static/img/wenzhang_riji.png">
+                        全部日记
+                    </a>
+                </li>
+                <li id="1" class="">
+                    <a role="button" class="btn_a">
+                        <img src="/static/img/jishu_riji.png">
+                        技术分享
+                    </a>
+                </li>
+                <li id="2" class="">
+                    <a role="button" class="btn_a">
+                        <img src="/static/img/shenghuo_riji.png">
+                        生活点滴
+                    </a>
+                </li>
+                <li id="3" class="">
+                    <a role="button" class="btn_a">
+                        <img src="/static/img/gengxin_riji.png">
+                        更新公告
+                    </a>
+                </li>
+                <li style="width: 60px"></li>
+            </ul>
+
+            <div class="input-group so col-xs-8 col-sm-4 col-md-3" style="left: 15px" >
+                <input type="text" class="form-control input_title">
+                <span class="input-group-addon input_search" >搜索</span>
+            </div>
+
+            </div>
+            <div class="article_list">
+                <div class="row row_list">
+                    <div class="col-xs-12 col-sm-12 col-md-9 muen">
+                        <div class="muen_list">
+
+
+                        </div>
+
+                        <div class="muen_btn">
+                            <span class="record" style="display: none;">1</span>
+                            <a role="button" class="btn_loading">加载更多</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 link_md">
+                        <div class="article_relevant">
+                            <p class="relevant_top">——文章统计——</p>
+                            <p class="relevant_details">文章总数：<span class="relevant_number wenzhang">25</span></p>
+                            <p class="relevant_details">文章分类：<span class="relevant_number">3</span></p>
+                            <p class="relevant_details">总评论量：<span class="relevant_number commentTotal">0</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="part_5">
+        <div class="container">
+            <div class="top_label">
+                <img src="/static/img/shengming.png"/>
+            </div>
+            <div class="more clear">
+                <div class="share clear">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);"
+                               onclick="window.open('http://service.weibo.com/share/share.php?url='+encodeURIComponent(document.location.href));return false;"
+                               title="分享到新浪微博">
+                                <img src="/static/img/common/xinlang.png"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"
+                               onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;"
+                               title="分享到QQ空间">
+                                <img src="/static/img/common/q_zone.png"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"
+                               onclick="window.open('http://connect.qq.com/widget/shareqq/index.html?url='+encodeURIComponent(document.location.href));return false;"
+                               title="分享到QQ好友">
+                                <img src="/static/img/common/qq.png"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="div_span">
+                            <span class="load_span">
+                                当前访问量：<label class="load_lbl number"><span
+                                    th:text="${sites.visitorVolume}"></span></label>
+                            </span>
+                    <br/>
+                    <span class="load_span">
+                            更新时间：<label class="load_lbl updateTime"><span
+                            th:text="${#dates.format(sites.updateDate, 'yyyy-MM-dd ')}"></span></label>
+                        </span>
+                </div>
+            </div>
+            <div class="copyright">
+                <span th:text="${sites.recordInfo}"></span>
+            </div>
+        </div>
+    </div>
+<!--返回指定-->
+<div class="load">
+    <div class="container">
+        <div class="container_right clear">
+            <a class="fh">
+                <img src="/static/img/common/top.png"/>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

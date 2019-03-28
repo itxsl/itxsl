@@ -1,0 +1,97 @@
+server:
+  port: 8688
+  jetty:
+    max-http-post-size: 800000
+site-url:  https://www.itxsl.cn #网站地址
+spring:
+  oauth:
+    qq:
+      client_id: -----------
+      client_secret: -----------
+      redirect_uri: ${site-url}/authorize/qq
+      code_uri: https://graph.qq.com/oauth2.0/authorize
+      access_token_uri: https://graph.qq.com/oauth2.0/token
+      openid_uri: https://graph.qq.com/oauth2.0/me
+      user_info_uri: https://graph.qq.com/user/get_user_info
+    weibo:
+      client-Id: -----------
+      client-secret: -----------
+      redirect-uri: ${site-url}/authorize/weibo
+      access-token-uri: https://api.weibo.com/oauth2/access_token
+      user-info-uri: https://api.weibo.com/2/users/show.json
+
+  datasource:
+      url: -----------
+      username: -----------
+      password: -----------
+      driver-class-name: org.postgresql.Driver
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+  session:
+    store-type: redis
+    timeout: 1h
+    redis:
+      namespace: itxsl
+  oss:
+    enable: qq  # aliyun , qq #阿里云存储只写上传，未实现图片清理功能，建议使用腾讯云存储
+    endpoint: -----------
+    bucket-name:  -----------
+    access-key-id: -----------
+    access-key-secret: -----------
+    qcloud-region: ap-chengdu #创建桶所在区域参考:https://cloud.tencent.com/document/product/436/6224
+    path: images/
+  servlet:
+    multipart:
+      max-file-size: 8000000
+  devtools:
+    restart:
+      enabled: true
+  mail:
+    host: smtp.qq.com
+    username: -----------
+    password: -----------
+    default-encoding: UTF-8
+    port: 587
+    auth: true
+    protocol: smtp
+    auth-key: mail.smtp.auth
+    timeout: 25000
+    timeout-key: mail.smtp.timeout
+    loglevel: true
+    loglevel-key: mail.smtp.debug
+    redirect-url: ${site-url}
+nutz:
+  json:
+    enabled: true
+    auto-unicode: false
+    quote-name: true
+    ignore-null: true
+    null-as-emtry: true
+    date-format: yyyy-MM-dd #时间格式
+    mode: compact
+  dao:
+    runtime:
+      add-column: true
+      check-index: false
+      delete-column: false
+      foce-create: false
+      create: true
+      migration: true
+      basepackage:
+          - cn.itxsl.kernel.model.mapped
+    sqlmanager:
+      paths:
+        - sqls
+logging:
+  level:
+    root: info
+    org.nutz: info
+

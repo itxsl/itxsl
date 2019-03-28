@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" th:href="${sites.logo}"/>
+    <title th:text="${sites.logoName}"></title>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href="/static/css/love/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/love/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/love/garden.js"></script>
+    <script type="text/javascript" src="/static/js/love/functions.js"></script>
+    <link href="/static/css/common.css" rel="stylesheet"/>
+    <script type="text/javascript" src="/static/js/common.js"></script>
+    <title>我们相爱的时间</title>
+
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('digital-7_mono.ttf') format("truetype");
+        }
+    </style>
+
+
+</head>
+
+<body>
+<nav class="navbar-fixed-top">
+    <div class="container">
+        <div class="nav-logo" style="float: left;border-radius:70%;overflow:hidden;" id="logo"></div>
+        <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-list">
+            <li><a id="1" href="/index">首页</a></li>
+            <li><a id="2" href="/article">日记本</a></li>
+            <li><a id="3" href="/message">留言板</a></li>
+            <li><a id="4" href="/link">友人帐</a></li>
+            <li><a id="5" href="/love" class="active">小时光</a></li>
+            <li><a id="6" href="/about">关于我</a></li>
+            <li class="nav-login">
+                <a id="login" href="/login" style="cursor: pointer">登陆</a>
+                <a id="logout" href="/logout" style="cursor: pointer;display: block">退出</a>
+            </li>
+            <li id="role"></li>
+        </ul>
+    </div>
+</nav>
+<div class="con">
+        <div id="mainDiv">
+            <div id="content">
+                <div id="code">
+                    <span class="comments">/**</span><br/>
+                    <span class="space"/><span class="comments">*2016—10-11,</span><br/>
+                    <span class="space"/><span class="comments">*<span
+                        th:text="${#dates.format(time, 'yyyy-MM-dd ')}"></span>.</span><br/>
+                    <span class="space"/><span class="comments">*/</span><br/>
+                    Boy name = <span class="keyword">Mr</span> ShouLai<br/>
+                    Girl name = <span class="keyword">Mrs</span> LongLei<br/>
+                    <span class="comments">// Fall in love river. </span><br/>
+                    The boy love the 媳妇;<br/>
+                    <span class="comments">// They love each other.</span><br/>
+                    The girl loved the boy;<br/>
+                    <span class="comments">// AS time goes on.</span><br/>
+                    The boy can not be separated the girl;<br/>
+                    <span class="comments">// At the same time.</span><br/>
+                    The girl can not be separated the boy;<br/>
+                    <span class="comments">// Both wind and snow all over the sky.</span><br/>
+                    <span class="comments">// Whether on foot or 5 kilometers.</span><br/>
+                    <span class="keyword">The boy</span> very <span class="keyword">happy</span>;<br/>
+                    <span class="keyword">The girl</span> is also very <span class="keyword">happy</span>;<br/>
+                    <span class="placeholder"/><span class="comments">// Whether it is right now</span><br/>
+                    <span class="placeholder"/><span class="comments">// Still in the distant future.</span><br/>
+                    <span class="placeholder"/>The boy has but one dream;<br/>
+                    <span class="comments">// The boy wants the girl could well have been happy.</span><br/>
+                    <br>
+                    <br>
+                    I want to say:<br/>
+                    Baby, I love you forever;<br/>
+                </div>
+                <div id="loveHeart">
+                    <canvas id="garden"></canvas>
+                    <div id="words">
+                        <div id="messages">
+                            亲爱的，这是我们相爱在一起的时光。
+                            <div id="elapseClock"></div>
+                        </div>
+                        <div id="loveu">
+                            爱你直到永永远远。<br/>
+                            <div class="signature">- Mr. ShouLai</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="container">
+                <div class="more clear">
+                    <div class="share clear">
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0);"
+                                   onclick="window.open('http://service.weibo.com/share/share.php?url='+encodeURIComponent(document.location.href));return false;"
+                                   title="分享到新浪微博">
+                                    <img src="/static/img/common/xinlang.png"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"
+                                   onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;"
+                                   title="分享到QQ空间">
+                                    <img src="/static/img/common/q_zone.png"/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);"
+                                   onclick="window.open('http://connect.qq.com/widget/shareqq/index.html?url='+encodeURIComponent(document.location.href));return false;"
+                                   title="分享到QQ好友">
+                                    <img src="/static/img/common/qq.png"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="div_span">
+                            <span class="load_span">
+                                当前访问量：<label class="load_lbl number"><span
+                                    th:text="${sites.visitorVolume}"></span></label>
+                            </span>
+                        <br/>
+                        <span class="load_span">
+                            更新时间：<label class="load_lbl updateTime"><span
+                                th:text="${#dates.format(sites.updateDate, 'yyyy-MM-dd ')}"></span></label>
+                        </span>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <span th:text="${sites.recordInfo}"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="load">
+            <div class="container">
+                <div class="container_right clear">
+                    <a class="fh">
+                        <img src="/static/img/common/top.png"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var offsetX = $("#loveHeart").width() / 2;
+        var offsetY = $("#loveHeart").height() / 2 - 55;
+        //var together = new Date(Date.parse("5/28/2015"));
+        var together = new Date();
+        together.setFullYear(2016, 10, 11);
+        together.setHours(20);
+        together.setMinutes(0);
+        together.setSeconds(0);
+        together.setMilliseconds(0);
+
+
+        if (!document.createElement('canvas').getContext) {
+            var msg = document.createElement("div");
+            msg.id = "errorMsg";
+            msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+            document.body.appendChild(msg);
+            $("#code").css("display", "none")
+            $("#copyright").css("position", "absolute");
+            $("#copyright").css("bottom", "10px");
+            document.execCommand("stop");
+        } else {
+            setTimeout(function () {
+                startHeartAnimation();
+            }, 5000);
+
+            timeElapse(together);
+            setInterval(function () {
+                timeElapse(together);
+            }, 500);
+
+            adjustCodePosition();
+            $("#code").typewriter();
+        }
+    </script>
+</body>
+</html>

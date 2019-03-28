@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" th:href="${sites.logo}"/>
+    <title th:text="${sites.logoName}"></title>
+    <meta name="keywords" th:content="${sites.keyword}">
+    <meta name="description" th:content="${sites.description}">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/admin/layui.all.js"></script>
+    <link rel="stylesheet" href="/static/admin/css/layui.css"/>
+</head>
+
+<body style="">
+<div class="layui-layout">
+
+    <div class="layui-side layui-bg-black" style="overflow-x: visible;">
+        <div class="user clear" style="height: 100px;padding-top: 20px;">
+            <div style="float: left;margin: 0px 0px 0px 30px;padding-top: 13px;">
+                <img  class="layui-anim-rotate" th:src="${user.icon}" style="border-radius: 50%;width: 50px;height: 50px;"  >
+            </div>
+            <div style="float: left;padding-top: 15px;margin-left: 10px;">
+                <span style="font-size: 10px;font-weight: bold;" th:text="${user.nickname}"></span><br/><br/>
+                <a href="" class="layui-icon layui-icon-username"
+                   style="color: #FFFFFF;font-size: 10px;padding-top: 15px;">个人中心</a>
+            </div>
+        </div>
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree site-demo-nav">
+                <li class="layui-nav-item  layui-this">
+                    <a class="layui-icon layui-icon-home" href="/admin/index" style="font-size: 14px">&nbsp;首页</a>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a class="layui-icon layui-icon-user" href="/admin/user" style="font-size: 14px">&nbsp;用户管理</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-icon layui-icon-read" href="/admin/article" style="font-size: 14px">&nbsp;笔记管理</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-icon layui-icon-note" href="/admin/comment" style="font-size: 14px">&nbsp;评论管理</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-icon layui-icon-link" href="/admin/link" style="font-size: 14px">&nbsp;友链管理</a>
+                </li>
+                <li class="layui-nav-item ">
+                    <a class="layui-icon layui-icon-dialogue" href="/admin/message" style="font-size: 14px">&nbsp;留言管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a class="layui-icon layui-icon-headset" style="font-size: 14px" href="/admin/music">&nbsp;音乐管理</a>
+                </li>
+                <li class="layui-nav-item" style="height: 30px; text-align: center"></li>
+                <span class="layui-nav-bar" style="top: 67.5px; height: 0px; opacity: 0;"></span>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body site-demo">
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+                <ul class="layui-nav layui-layout-left">
+                    <li class="layui-nav-item">
+                        <a href="hard.html"><i class="layui-icon layui-icon-chart-screen layui-ico"></i>用户硬件信息</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="user.html"><i class="layui-icon layui-icon-group layui-ico"></i>第三方登陆</a>
+                    </li>
+                </ul>
+                <ul class="layui-nav layui-layout-right">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="layui-icon layui-icon-set-fill layui-ico"></i>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="">设置</a>
+                            </dd>
+                            <dd>
+                                <a href="">退出</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-container" style="margin-top: 30px;">
+            <div class="layui-row">
+                <form class="layui-form" action=""  lay-filter="index">
+                    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+                        <strong>网站信息</strong>
+                        <hr class="layui-bg-black">
+                        <br/>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">关&nbsp;&nbsp;键&nbsp;&nbsp;字:</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="keyword" lay-verify="required" autocomplete="off"
+                                   placeholder="示例(关键字以英文逗号分隔):java,html,go" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">网站描述:</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="description" lay-verify="required" autocomplete="off"
+                                   placeholder="请输入网站描述" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm8 layui-col-md8">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">网站名称:</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="logoName" lay-verify="required" autocomplete="off"
+                                       placeholder="请输入网站名称" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">备&nbsp;&nbsp;案&nbsp;&nbsp;号:</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="recordInfo" lay-verify="required" placeholder="请输入备案信息"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm6 layui-col-md2 layui-col-md-offset1">
+                        <div class="layui-col-xs6 layui-col-sm1 layui-col-md1   layui-col-md-offset1   layui-col-xs-offset2"
+                             style="margin-top:8px;">
+                            <p>网</p>
+                            <p>站</p>
+                            <p>图</p>
+                            <p>标</p>
+                        </div>
+                        <div class="layui-upload layui-col-xs6 layui-col-sm6 layui-col-md8 layui-col-md-offset2   layui-col-sm-offset2"
+                             style="width: 100px;margin-top: -5px;">
+                            <div class="layui-upload-list" style="">
+                                <img class="layui-upload-img" src="/static/admin/images/logo.png" width="90px" id="logo"
+                                     height="90px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+                        <br/>
+                        <strong>首页信息</strong>
+                        <hr class="layui-bg-black">
+                        <br/>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">首页题头</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="indexTitle" lay-verify="required" autocomplete="off"
+                                   placeholder="请输入首页题头" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm8 layui-col-md8">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">题头内容</label>
+                            <div class="layui-input-block">
+						<textarea type="text" name="indexTitleContent" lay-verify="required" placeholder="提示：每句话请以<p>开头,以</结尾>。示例:<p>只为憧憬的未来而奔走</p>" autocomplete="off" style="height: 150px;"
+                                                  class="layui-input"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-xs12 layui-col-sm6 layui-col-md2 layui-col-md-offset1">
+                        <div class="layui-col-xs2 layui-col-sm2 layui-col-md1   layui-col-md-offset1  layui-col-xs-offset2"
+                             style="margin-top:30px;">
+                            <p>首</p>
+                            <p>页</p>
+                            <p>背</p>
+                            <p>景</p>
+                        </div>
+                        <div class="layui-upload layui-col-xs6 layui-col-sm6 layui-col-md8  layui-col-md-offset1 "
+                             style="width: 100px;margin-top: -10px;">
+                            <div class="layui-upload-list" style="">
+                                <img class="layui-upload-img" width="200px" id="background" height="150px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">欢&nbsp;&nbsp;迎&nbsp;&nbsp;语</label>
+                        <div class="layui-input-block">
+									<textarea type="text" name="indexWelcome" lay-verify="required" placeholder="提示：每句话请以<p>开头,以</结尾>。示例:<p>只为憧憬的未来而奔走</p>" autocomplete="off" style="height: 150px;"
+                                              class="layui-input"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
+                        <br/>
+                        <strong>关于我信息</strong>
+                        <hr class="layui-bg-black">
+                        <br/>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">个人信息</label>
+                        <div class="layui-input-block">
+									<textarea type="text" name="userInfo" lay-verify="required" placeholder="提示：每句话请以<p>开头,以</结尾>。示例:<p>只为憧憬的未来而奔走</p>"
+                                              autocomplete="off" style="height: 150px;"
+                                              class="layui-input"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">个人技能</label>
+                        <div class="layui-input-block">
+									<textarea type="text" name="userSkill" lay-verify="required" placeholder="提示：每句话请以<p>开头,以</结尾>。示例:<p>只为憧憬的未来而奔走</p>"
+                                              autocomplete="off" style="height: 150px;"
+                                              class="layui-input"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">联系方式</label>
+                        <div class="layui-input-block">
+									<textarea type="text" name="userContact" lay-verify="required"
+                                              placeholder="提示：每句话请以<p>开头,以</结尾>。示例:<p>只为憧憬的未来而奔走</p>" autocomplete="off" style="height: 150px;"
+                                              class="layui-input"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block layui-col-xs12 layui-col-sm12 layui-col-md12">
+                            <button class="layui-btn" lay-submit="" lay-filter="demo1">设置</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="site-tree-mobile layui-hide">
+        <i class="layui-icon">&#xe602;</i>
+    </div>
+    <script>
+        var timestamp=new Date().getTime();
+        layui.use(['form', 'layedit', 'laydate'], function () {
+            var form = layui.form,
+                layer = layui.layer,
+                upload = layui.upload;
+            $.get("/api/"+timestamp+"/common", function (result) {
+               if (result.code==200){
+                   var data = result.data;
+                   $("#logo").attr('src',data.logo);
+                   $("#background").attr('src',data.indexBackground);
+                   form.val('index', {
+                       'logoName': data.logoName,
+                       'recordInfo': data.recordInfo,
+                       'keyword': data.keyword,
+                       'description': data.description,
+                       'indexTitle': data.indexTitle,
+                       'indexTitleContent': data.indexTitleContent,
+                       'indexWelcome': data.indexWelcome,
+                       'userInfo': data.userInfo,
+                       'userSkill': data.userSkill,
+                       'userContact': data.userContact,
+                   })
+               }
+            });
+            //监听提交
+            form.on('submit(demo1)', function (data) {
+                $.post("/api/"+timestamp+"/common",
+                    {
+                        'logo': $("#logo").attr('src'),
+                        'indexBackground': $("#background").attr('src'),
+                        'logoName': data.field.logoName,
+                        'recordInfo': data.field.recordInfo,
+                        'keyword': data.field.keyword,
+                        'description': data.field.description,
+                        'indexTitle': data.field.indexTitle,
+                        'indexTitleContent': data.field.indexTitleContent,
+                        'indexWelcome': data.field.indexWelcome,
+                        'userInfo': data.field.userInfo,
+                        'userSkill': data.field.userSkill,
+                        'userContact': data.field.userContact,
+                    },
+                    function (data) {
+                        if (data.code == 200) {
+                            layer.msg("设置成功！")
+                            setTimeout(function () {
+                                location.reload()
+                            },200)
+                        } else {
+                            layer.msg(data.message)
+                        }
+                    });
+                return false;
+            });
+
+            //普通图片上传 background
+            var uploadInst = upload.render({
+                elem: '#logo',
+                url: '/api/'+timestamp+'/file',
+                done: function (res) {
+                    //如果上传失败
+                    if (res.errno > 0) {
+                        return layer.msg('上传失败');
+                    } else {
+                        $('#logo').attr('src', res.data[0]); //图片链接（base64）
+                    }
+                    //上传成功
+                }
+
+            });
+
+            //普通图片上传 background
+            var uploadInst = upload.render({
+                elem: '#background',
+                url: '/api/'+timestamp+'/file',
+                done: function (res) {
+                    //如果上传失败
+                    if (res.errno > 0) {
+                        return layer.msg('上传失败');
+                    } else {
+                        $('#background').attr('src', res.data[0]); //图片链接（base64）
+                    }
+                    //上传成功
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

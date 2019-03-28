@@ -1,0 +1,210 @@
+.widget {
+  border: 1px solid #33393c;
+  border-top: 2px solid #313639;
+  background: #4b5357;
+  color: #ffffff;
+}
+.widget .widget_top {
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid #3f4649;
+}
+.widget .widget_top a {
+  color: #fff;
+}
+.widget .widget_top .title_right {
+  margin: 0px 10px;
+}
+.widget .widget_top a,
+.widget .widget_top .title_right,
+.widget .widget_top .top_left {
+  float: left;
+}
+.widget .add_div {
+  width: 100%;
+  padding: 15px;
+}
+.widget .add_div .publish_left {
+  color: #999;
+}
+.widget .add_div .publish_left .publish_li {
+  margin: 20px 0px;
+}
+.widget .add_div .publish_left .publish_li input[type=text] {
+  background: none;
+  border: 1px solid #666d70;
+  outline: none;
+  padding: 4px 8px;
+}
+.widget .add_div .publish_left .publish_li select {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #848c90;
+  background: 0 0;
+  width: 200px;
+  padding: 4px 8px;
+}
+.widget .add_div .publish_left .publish_li input[type=button] {
+  background: none;
+  border: 1px solid #666d70;
+  outline: none;
+  padding: 4px 8px;
+  color: #666d70;
+}
+.widget .add_div .publish_left .publish_li input[type=button]:hover {
+  background: #666d70;
+  color: #B088FF;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.widget .add_div .publish_right {
+  color: #999;
+}
+.widget .add_div .publish_right .publish_data {
+  margin: 4px 0px;
+}
+.widget .add_div .publish_right .publish_data img {
+  width: 180px;
+  height: 120px;
+  margin-bottom: 4px;
+}
+.widget .add_div .publish_right .publish_data span {
+  color: #B088FF;
+}
+.widget .add_div .wangeditor {
+  margin-top: 4px;
+  width: 100%;
+  height: 450px;
+}
+.widget .add_div .dvi_btn {
+  text-align: center;
+}
+.widget .add_div .dvi_btn input[type=button] {
+  background: none;
+  border: 1px solid #666d70;
+  outline: none;
+  padding: 4px 8px;
+  color: #666d70;
+}
+.widget .add_div .dvi_btn input[type=button]:hover {
+  background: #666d70;
+  color: #B088FF;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.wl_list {
+  width: 800px;
+  height: 400px;
+  background-color: #2f3638;
+  box-shadow: 1px 1px 10px 0 #000;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  margin-left: -300px;
+  z-index: 1111;
+  display: none;
+}
+.wl_list .wl_top,
+.wl_list .wl_ul {
+  width: 100%;
+}
+.wl_list .glyphicon {
+  color: #FFFFFF;
+}
+.wl_list .wl_top {
+  padding: 10px;
+  text-align: right;
+  border-bottom: 1px solid #3f4649;
+}
+.wl_list .wl_ul {
+  padding: 4px;
+  height: 355px;
+  list-style: none;
+  overflow-y: scroll;
+}
+.wl_list .wl_ul .ul_img li {
+  margin: 4px;
+  float: left;
+}
+.wl_list .wl_ul .ul_img li a img {
+  width: 248px;
+  height: 148px;
+}
+.wl_file {
+  float: left;
+}
+.wl_file input {
+  float: left;
+  font-size: 12px;
+  margin: 0px 4px;
+}
+.wl_file input[type=button] {
+  background: transparent;
+  border: none;
+  color: #fff;
+  margin-top: 2px;
+}
+.wl_remove {
+  float: right;
+}
+.audio {
+  width: 800px;
+  height: 400px;
+  background-color: #2f3638;
+  box-shadow: 1px 1px 10px 0 #000;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  margin-left: -300px;
+  z-index: 1111;
+  display: none;
+}
+.audio .audio_top,
+.audio .audio_list,
+.audio table {
+  width: 100%;
+}
+.audio .glyphicon {
+  color: #FFFFFF;
+}
+.audio .audio_top {
+  padding: 10px;
+  text-align: right;
+  border-bottom: 1px solid #3f4649;
+}
+.audio .audio_list {
+  height: 310px;
+  overflow-y: scroll;
+}
+.audio table {
+  color: #FFFFFF;
+}
+.audio tbody tr td {
+  font-size: 14px;
+  padding: 7px 6px;
+  border-top: 1px solid #666d70;
+}
+.audio tbody tr td .a_music,
+.audio tbody tr td .a_setup {
+  display: inline-block;
+  padding: 5px 6px;
+  font-size: 12px;
+  line-height: 12px;
+}
+.audio tbody tr td .a_music {
+  color: #09BB07;
+  border: 1px solid #09BB07;
+}
+.audio tbody tr td .a_music .glyphicon {
+  color: #09BB07;
+}
+.audio tbody tr td .a_setup {
+  color: #f35842;
+  border: 1px solid #f35842;
+}
+.audio tbody tr td .a_setup .glyphicon {
+  color: #f35842;
+}
